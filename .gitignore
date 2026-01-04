@@ -9,4 +9,5 @@ wheels/
 # Virtual environments
 .venv
 
-
+# fred api key
+.Streamlit/secrets.toml
