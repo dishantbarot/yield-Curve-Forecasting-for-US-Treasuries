@@ -150,18 +150,6 @@ with col2:
     st.write(f"**Scenario-adjusted 10Y Yield:** {scenario_yield:.2f} %")
 
 # =====================================================
-# FEATURE IMPORTANCE
-# =====================================================
-st.subheader("📌 Feature Importance (What Drives the Prediction)")
-
-importances = pd.Series(
-    model.feature_importances_,
-    index=feature_cols
-).sort_values(ascending=False).head(10)
-
-st.bar_chart(importances)
-
-# =====================================================
 # ECONOMIC EXPLANATION
 # =====================================================
 st.markdown("""
