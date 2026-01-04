@@ -140,14 +140,6 @@ with col2:
         value=f"{prediction:.2f} %"
     )
 
-    st.markdown("### 🧪 Scenario Analysis")
-    shock = st.slider(
-        "Apply Yield Shock (bps)",
-        -100, 100, 0
-    )
-
-    scenario_yield = prediction + shock / 100
-    st.write(f"**Scenario-adjusted 10Y Yield:** {scenario_yield:.2f} %")
 
 # =====================================================
 # ECONOMIC EXPLANATION
