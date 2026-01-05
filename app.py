@@ -84,7 +84,7 @@ prediction = model.predict(latest_features)[0]
 # =====================================================
 # HEADER & METRICS
 # =====================================================
-st.title("📊 Fixed-Income Intelligence Dashboard")
+st.title("📊 Yield Curve Predictor")
 st.markdown("#### **U.S. Treasury Yield Curve ML Forecaster**")
 st.divider()
 
