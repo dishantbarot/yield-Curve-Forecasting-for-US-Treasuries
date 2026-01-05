@@ -214,7 +214,7 @@ with plot_col:
         )
     )
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 
 # =====================================================
@@ -270,6 +270,8 @@ with insight_col:
 # =====================================================
 # ECONOMIC EXPLANATION SECTION
 # =====================================================
+import streamlit.components.v1 as components
+
 components.html(
     """
     <div style="
