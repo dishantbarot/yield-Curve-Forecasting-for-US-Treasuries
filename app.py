@@ -124,20 +124,21 @@ with plot_col:
     ))
 
     fig.update_layout(
-        height=780,  # 🔥 BIG plot (this is the main fix)
-        margin=dict(l=40, r=40, t=80, b=40),
-        xaxis_title="Date",
-        yaxis_title="Yield (%)",
-        hovermode="x unified",
-        template="plotly_white",
-        legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=1.02,
-            xanchor="center",
-            x=0.5
-        )
+    height=820,  # 🔥 taller than before
+    margin=dict(l=10, r=20, t=70, b=40),  # 🔥 tighter left margin
+    xaxis_title="Date",
+    yaxis_title="Yield (%)",
+    hovermode="x unified",
+    template="plotly_white",
+    legend=dict(
+        orientation="h",
+        yanchor="bottom",
+        y=1.02,
+        xanchor="center",
+        x=0.5
     )
+)
+
 
     st.plotly_chart(fig, use_container_width=True)
 
@@ -146,40 +147,48 @@ with plot_col:
 # =====================================================
 
 with insight_col:
-    st.markdown("### Model Insights")
-
     st.markdown(
-        f"""
-        **Predicted Next-Period 10Y Yield**  
-        <span style="font-size:32px; font-weight:600;">
-            {prediction:.2f} %
-        </span>
+        """
+        <div style="padding-top: 60px;">
+            <h3 style="margin-bottom: 20px;">Model Insights</h3>
+        </div>
         """,
         unsafe_allow_html=True
     )
 
-    st.markdown("---")
+    st.markdown(
+        f"""
+        <div style="font-size: 14px; color: gray;">Predicted Next-Period</div>
+        <div style="font-size: 34px; font-weight: 600; margin-bottom: 20px;">
+            {prediction:.2f} %
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
     latest_spread = df["10Y"].iloc[-1] - df["2Y"].iloc[-1]
 
-    st.markdown("**Yield Curve Signal**")
-
     if latest_spread < 0:
-        signal = "Inverted"
-        interpretation = "Historically associated with elevated recession risk."
+        signal = "Inverted Yield Curve"
+        interpretation = "Historically linked with higher recession probability."
     elif latest_spread < 0.5:
-        signal = "Flattening"
+        signal = "Flattening Yield Curve"
         interpretation = "Late-cycle signal; markets pricing uncertainty."
     else:
-        signal = "Normal"
-        interpretation = "Consistent with economic expansion expectations."
+        signal = "Normal Yield Curve"
+        interpretation = "Typically observed during economic expansion."
 
     st.markdown(
         f"""
-        **Current Regime:** {signal}  
-        <span style="color: gray; font-size: 14px;">
-        {interpretation}
-        </span>
+        <div style="margin-top: 30px;">
+            <div style="font-size: 14px; color: gray;">Curve Signal</div>
+            <div style="font-size: 18px; font-weight: 600;">
+                {signal}
+            </div>
+            <div style="font-size: 13px; color: gray; margin-top: 6px;">
+                {interpretation}
+            </div>
+        </div>
         """,
         unsafe_allow_html=True
     )
