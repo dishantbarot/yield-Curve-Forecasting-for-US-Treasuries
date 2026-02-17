@@ -1,4 +1,4 @@
-# 📈 Yield Curve Predictor  
+# 📈 Yield Curve Forecasting for US Treasuries  
 ### Machine Learning–Based Forecasting of U.S. Treasury Yield Curve Dynamics
 
 ---
